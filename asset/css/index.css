@@ -1,0 +1,39 @@
+#nav ul{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+#nav ul li{
+    font-weight: 700;
+    text-align: right;
+}
+#dash-cf #left-side{
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    background-color: rgba(238, 237, 237, 0.452);
+}
+#dash-cf #left-side button{
+    font-size: 14px;
+    font-weight: 600;
+}
+#dash-cf #right-side{
+    border-radius: 5px;
+    background-color: rgba(238, 237, 237, 0.452);
+}
+#dash-cf #right-side .profile{
+}
+#dash-cf .profile img{
+    height: 200px;
+    width: 75%;
+    display: block;
+    margin: 0 auto;
+}
+#dash-cf #right-side .profile h6{
+    font-weight: 700;
+}
+/* 
+.assigment{
+    height: 400px;
+    width: 100%;
+    overflow: scroll;
+} */

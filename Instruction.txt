@@ -1,0 +1,71 @@
+Follow all the instruction
+Note- Firstly create database and tables.
+
+Problem - In this project I have leave only two things 1. Meeting and 2. Img.
+        So if you are reaching this then create this two things own your self. This is as a task for you.
+Database name - studentmanagement
+
+Tables
+MariaDB [studentmanagement]> desc admin_user;
++------------+--------------+------+-----+---------+-------+
+| Field      | Type         | Null | Key | Default | Extra |
++------------+--------------+------+-----+---------+-------+
+| fullname   | varchar(255) | NO   |     | NULL    |       |
+| profilepic | varchar(400) | NO   |     | NULL    |       |
+| email      | varchar(255) | NO   | PRI | NULL    |       |
+| mobile     | varchar(255) | NO   |     | NULL    |       |
+| department | varchar(255) | NO   |     | NULL    |       |
+| gender     | varchar(255) | NO   |     | NULL    |       |
+| address    | varchar(255) | NO   |     | NULL    |       |
+| password   | varchar(255) | NO   |     | NULL    |       |
++------------+--------------+------+-----+---------+-------+
+
+MariaDB [studentmanagement]> desc assingment;
++----------------+--------------+------+-----+---------+----------------+
+| Field          | Type         | Null | Key | Default | Extra          |
++----------------+--------------+------+-----+---------+----------------+
+| assingmenttop  | varchar(255) | YES  |     | NULL    |                |
+| assingmentfile | varchar(400) | NO   |     | NULL    |                |
+| department     | varchar(255) | NO   |     | NULL    |                |
+| semester       | varchar(255) | NO   |     | NULL    |                |
+| id             | int(11)      | NO   | PRI | NULL    | auto_increment |
++----------------+--------------+------+-----+---------+----------------+
+5 rows in set (0.001 sec)
+
+MariaDB [studentmanagement]> 
+
+MariaDB [studentmanagement]> desc attendance;
++------------+--------------+------+-----+---------+-------+
+| Field      | Type         | Null | Key | Default | Extra |
++------------+--------------+------+-----+---------+-------+
+| enrollment | varchar(50)  | NO   | PRI | NULL    |       |
+| date       | date         | NO   | PRI | NULL    |       |
+| subject    | varchar(100) | NO   | PRI | NULL    |       |
+| attendance | varchar(10)  | YES  |     | NULL    |       |
++------------+--------------+------+-----+---------+-------+
+4 rows in set (0.001 sec)
+
+MariaDB [studentmanagement]> 
+
+MariaDB [studentmanagement]> desc student_add;
++-------------+--------------+------+-----+---------+-------+
+| Field       | Type         | Null | Key | Default | Extra |
++-------------+--------------+------+-----+---------+-------+
+| fullname    | varchar(255) | NO   |     | NULL    |       |
+| profile_pic | varchar(255) | NO   |     | NULL    |       |
+| fathername  | varchar(255) | NO   |     | NULL    |       |
+| mothername  | varchar(255) | NO   |     | NULL    |       |
+| department  | varchar(255) | NO   |     | NULL    |       |
+| semester    | varchar(255) | NO   |     | NULL    |       |
+| enrollment  | varchar(255) | NO   | PRI | NULL    |       |
+| gender      | varchar(255) | NO   |     | NULL    |       |
+| email       | varchar(255) | NO   |     | NULL    |       |
+| mobile      | varchar(255) | NO   |     | NULL    |       |
+| address     | varchar(255) | NO   |     | NULL    |       |
+| password    | varchar(255) | NO   |     | NULL    |       |
++-------------+--------------+------+-----+---------+-------+
+12 rows in set (0.001 sec)
+
+MariaDB [studentmanagement]> 
+
+

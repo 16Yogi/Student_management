@@ -1,0 +1,46 @@
+#admin_cf{
+    padding: 100px 0;
+}
+#admin_cf .form-container{
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+#admin_cf .form-container h2{
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 50px;
+}
+#admin_cf .admin_item{
+    height: 60px;
+    width: 60px;
+    line-height: 60px;
+    border-radius: 50%;
+    font-size: 23px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+#admin_cf .admin_input{
+
+}
+#admin_cf #admin_input label{
+    font-weight: 700;
+    color: rgb(90, 89, 89);
+}
+#admin_cf #admin_input .form_input{
+    border: 0.9px solid rgb(189, 186, 186);
+    border-radius: 5px;
+    /* box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px; */
+    box-shadow: rgb(204, 219, 232) 1px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+}
+#admin_cf #admin_input .form_input input{
+    width: 90%;
+    padding: 8px 8px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+}
+#admin_cf #admin_input .form_input i{
+    margin: 12px 0;
+}
+#admin_cf #admin_input .form_input1 input{
+    width: 100%;
+}

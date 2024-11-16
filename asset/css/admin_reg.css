@@ -1,0 +1,41 @@
+
+#reg_cf{
+    height: 858px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-image: url("https://images.pexels.com/photos/1007023/pexels-photo-1007023.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+}
+#reg_cf .reg_form{
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.767);
+}
+#reg_cf .reg_form .item{
+    height: 60px;
+    width: 60px;
+    text-align: center;
+    line-height: 60px;
+    border-radius: 50%;
+    font-size: 25px;
+    margin: 0 auto;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+#reg_cf .reg_form h2{
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 50px;
+}
+#reg_cf .submit_btn{
+    width: 100%;
+    font-weight: 700;
+}
+.error{
+    font-size: 15px;
+    font-weight: 600;
+    color: red;
+}
+input.success{
+    font-size: 15px;
+    font-weight: 700;
+    color: green;
+}

@@ -1,0 +1,61 @@
+#home-cf{
+    height: 858px;
+    /* width: 100%; */
+    background-size: 100% 100%;
+    background-repeat:no-repeat;
+    background-image: url("https://images.pexels.com/photos/743986/pexels-photo-743986.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+}
+#home-cf h2{
+    font-weight: 700;
+}
+#home-cf #home-item{
+    height: auto;
+    border-radius: 5px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    background-color: white;
+}
+#home-cf #home-item:hover{
+    transition: 0.5s;
+    background-color: rgb(22, 110, 243);
+}
+
+#home-cf #home-item {
+    color: gray;
+}
+
+#home-cf #home-item .item{
+    height: 60px;
+    width: 60px;
+    text-align: center;
+    line-height: 60px;
+    font-size: 25px;
+    border-radius: 50%;
+    margin: 0 auto;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    background-color: white;
+}
+#home-cf #home-item .content h3{
+    font-weight: 700;
+    line-height: 70px;
+    text-align: center;
+    color: black;
+}
+#home-cf #home-item:hover .content h3{
+    transition: 0.5s;
+    color: rgb(255, 255, 255); 
+}
+#home-cf #home-item .content p{
+    text-align: center;
+    font-weight: 700;
+}
+#home-cf #home-item .content p a{
+    text-decoration: none;
+    color: gray;
+}
+#home-cf #home-item:hover .content p a{
+    color: white;
+}
+#home-cf #home-item:hover hr{
+    color: wheat;
+    background-color: white;
+}
