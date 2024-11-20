@@ -31,7 +31,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index</title>
+    <title>Admin | Teachers</title>
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
@@ -85,6 +85,7 @@
                     <button class="nav-link text-left" id="v-pills-users-tab" data-toggle="pill" data-target="#v-pills-assignment" type="button"><i class="fa-solid fa-file pr-3"></i>Assignment</button>
                     <button class="nav-link text-left" id="v-pills-users-tab" data-toggle="pill" data-target="#v-pills-attendance" type="button"><i class="fa-solid fa-clipboard-user pr-3"></i>Attendance</button>
                     <button class="nav-link text-left" id="v-pills-users-tab" data-toggle="pill" data-target="#v-pills-all-user" type="button"><i class="fa-solid fa-users pr-3"></i>Students</button>
+                    <button class="nav-link text-left" id="v-pills-users-tab" data-toggle="pill" data-target="#v-pills-bug" type="button"><i class="fa-solid fa-bug pr-3"></i>Reports</button>
                 </div>
             </div>
             <div class="col-9 mx-3 py-3 px-4" id="right-side">
@@ -104,7 +105,10 @@
                         <div class="col" id="profile">
                             <div class="row">
                                 <div class="col-4">
-                                    <img src="img4/<?php echo $profilepic; ?>" alt="profilepic" class="img-fluid">
+                                    <img src="asset/database/img4/85734470.jpeg" alt="">
+                                    <!-- <img src="img4/<?php 
+                                    // echo $profilepic; 
+                                    ?>" alt="profilepic" class="img-fluid"> -->
                                 </div>
                                 <div class="col-8">
                                     <p>
@@ -400,8 +404,6 @@
                             });
                         });
                     </script>
-
-
                     <!-- end assignment -->
  
                     <!-- start Attendance -->
@@ -784,7 +786,7 @@
                     
                         });
                     </script>
-
+                    <!-- end attendance -->
 
                     <!-- All student -->
                     <div class="tab-pane fade" id="v-pills-all-user" role="tabpanel">
@@ -864,7 +866,8 @@
                                             Delete
                                         </button>
 
-
+                                        <input type="checkbox" name="activation" class="activation-checkbox" data-enrollment="<?php echo $enroll; ?>" <?php echo ($row['is_active'] == 1) ? 'checked' : ''; ?>>
+                                        
                                         <!-- profile -->
                                         <div class="modal" id="profileModal">
                                             <div class="modal-dialog">
@@ -1019,6 +1022,38 @@
                                                     });
                                                 }
                                             });
+
+                                            // active inactive
+                                            $(document).on('change', '.activation-checkbox', function() {
+                                                const enrollment = $(this).data('enrollment');
+                                                const isActive = $(this).prop('checked') ? 1 : 0; // 1 if checked, 0 if unchecked
+                                            
+                                                // Disable all checkboxes while the request is being processed
+                                                $('.activation-checkbox').prop('disabled', true);
+                                            
+                                                $.ajax({
+                                                    url: 'asset/database/update_user_status.php',  // PHP file that handles the update
+                                                    type: 'POST',
+                                                    data: {
+                                                        enrollment: enrollment,
+                                                        is_active: isActive  // Set is_active to 1 (checked) or 0 (unchecked)
+                                                    },
+                                                    success: function(response) {
+                                                        if (response.trim() === 'Success') {
+                                                            alert(isActive ? 'User disabled successfully!' : 'User enabled successfully!');
+                                                        } else {
+                                                            alert('Error updating user status.');
+                                                        }
+                                                    },
+                                                    error: function() {
+                                                        alert('An error occurred while updating the user status.');
+                                                    },
+                                                    complete: function() {
+                                                        // Re-enable the checkboxes after the AJAX request is completed
+                                                        $('.activation-checkbox').prop('disabled', false);
+                                                    }
+                                                });
+                                            });                                           
                                         </script>
                                     </td>
                                 </tr>
@@ -1028,7 +1063,129 @@
                             </tbody>
                         </table>
                     </div>
+                    <!-- end all student -->
 
+                   <!-- bug -->
+                    <div class="tab-pane fade" id="v-pills-bug" role="tabpanel">
+                        <h1>Bugs</h1>
+                        <hr> 
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Enrollment</th>
+                                    <th scope="col">Report Title</th>
+                                    <th scope="col">Report Comment</th>
+                                    <th scope="col">Profile</th>
+                                </tr>
+                            </thead>
+                            <?php
+                                $sqlrep = "SELECT * FROM report";
+                                $resultrep = mysqli_query($con, $sqlrep);
+                                while($row = mysqli_fetch_assoc($resultrep)){
+                            ?>
+                            <tbody>
+                                <tr>
+                                    <th scope="row"><?php echo $row['enrollment']?></th>
+                                    <td><?php echo $row['report_title']?></td>
+                                    <td><?php echo $row['report_comment']?></td>
+                                    <td>
+                                        <button class="btn btn-info" data-toggle="modal" data-target="#updatereport" onclick="getStudentData('<?php echo $row['enrollment']?>')">Update</button>
+                                        <button class="btn btn-success" onclick="markAsDone('<?php echo $row['enrollment']?>')">Done</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <?php
+                                }
+                            ?>
+                        </table>
+                    
+                        <!-- Modal (Move this outside the loop) -->
+                        <div class="modal" id="updatereport">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Update Student: <span id="modal-enrollment"></span></h4>
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    </div>
+                                    <form id="updateForm">
+                                        <div class="modal-body">
+                                            <input type="hidden" id="update-enrollment" name="enrollment">
+                                            <div class="form-group">
+                                                <label for="update-fullname">Full Name</label>
+                                                <input type="text" class="form-control" id="update-fullname" name="fullname" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="update-fathername">Father Name</label>
+                                                <input type="text" class="form-control" id="update-fathername" name="fathername" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="update-mothername">Mother Name</label>
+                                                <input type="text" class="form-control" id="update-mothername" name="mothername" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="update-department">Department</label>
+                                                <input type="text" class="form-control" id="update-department" name="department" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="update-semester">Semester</label>
+                                                <input type="text" class="form-control" id="update-semester" name="semester" required>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="submit" class="btn btn-info">Save Changes</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end bug -->
+
+                    <script>
+                        function getStudentData(enrollment) {
+                            $.ajax({
+                                url: 'asset/database/get_student_data.php', 
+                                type: 'POST',
+                                data: {enrollment: enrollment}, 
+                                success: function(data) {
+                                    var student = JSON.parse(data); 
+                                    $('#update-enrollment').val(student.enrollment);  
+                                    $('#update-fullname').val(student.fullname);      
+                                    $('#update-fathername').val(student.fathername);  
+                                    $('#update-mothername').val(student.mothername);  
+                                    $('#update-department').val(student.department);  
+                                    $('#update-semester').val(student.semester);      
+                                    $('#modal-enrollment').text(student.enrollment);   
+                                }
+                            });
+                        }
+                    
+                        $('#updateForm').submit(function(e) {
+                            e.preventDefault();  
+                            $.ajax({
+                                url: 'asset/database/update_student_re.php', 
+                                type: 'POST',
+                                data: $(this).serialize(),
+                                success: function(response) {
+                                    alert(response); 
+                                    $('#updatereport').modal('hide'); 
+                                    location.reload();
+                                }
+                            });
+                        });
+                    
+                        function markAsDone(enrollment) {
+                            $.ajax({
+                                url: 'asset/database/mark_done.php', 
+                                type: 'POST',
+                                data: {enrollment: enrollment},
+                                success: function(response) {
+                                    alert(response); 
+                                    location.reload(); 
+                                }
+                            });
+                        }
+                    </script>
                 </div>
             </div>
         </div>

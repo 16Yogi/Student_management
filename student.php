@@ -34,7 +34,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index</title>
+    <title>Index | Student</title>
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
@@ -81,9 +81,10 @@
                     <button class="nav-link text-left" id="v-pills-users-tab" data-toggle="pill" data-target="#v-pills-meeting" type="button"><i class="fa-solid fa-handshake pr-3"></i>Meeting</button>
                     <button class="nav-link text-left" id="v-pills-users-tab" data-toggle="pill" data-target="#v-pills-assingment" type="button"><i class="fa-solid fa-file pr-3"></i>Assignment</button>
                     <button class="nav-link text-left" id="v-pills-users-tab" data-toggle="pill" data-target="#v-pills-attendance" type="button"><i class="fa-solid fa-clipboard-user pr-3"></i>Attendance</button>
-                    <!-- <button class="nav-link text-left" id="v-pills-users-tab" data-toggle="pill" data-target="#v-pills-all-user" type="button"><i class="fa-solid fa-users pr-3"></i>Students</button> -->
+                    <button class="nav-link text-left" id="v-pills-users-tab" data-toggle="pill" data-target="#v-pills-report" type="button"><i class="fa-solid fa-bug pr-3"></i>Report</button>
                 </div>
             </div>
+
             <div class="col-9 mx-3 py-3 px-4" id="right-side">
                 <div class="tab-content " id="v-pills-tabContent">
                     <!-- profile -->
@@ -101,60 +102,56 @@
                         <div class="col" id="profile">
                             <div class="row">
                                 <div class="col-4">
-                                    <img src="img4/<?php echo $stupic ; ?>" alt="profilepic" class="img-fluid">
+                                    <img src="asset/database/img4/<?php echo $stupic ; ?>" alt="profilepic" class="img-fluid">
                                 </div>
-                                <div class="col-8">
-                                    <p>
-                                        <b>Name:</b>
-                                        <span><?php echo $stuname; ?></span>
-                                    </p>
-                                    <p>
-                                        <b>Enrollment:</b>
-                                        <span><?php echo $enroll;?></span>
-                                    </p>
-                                    <p>
-                                        <b>Father Name:</b>
-                                        <span><?php echo $stufather;?></span>
-                                    </p>
-                                    <p>
-                                        <b>Mother Name:</b>
-                                        <span><?php echo $stumother;?></span>
-                                    </p>
-                                    <p>
-                                        <b>Semester:</b>
-                                        <span><?php echo $sem;?></span>
-                                    </p>
-                                    <p>
-                                        <b>Department:</b>
-                                        <span><?php echo $studepart;?></span>
-                                    </p>
-                                    <p>
-                                        <b>Email:</b>
-                                        <span><?php echo $email; ?></span>
-                                    </p>
-                                    <p>
-                                        <b>Mobile:</b>
-                                        <span><?php echo $mobile; ?></span>
-                                    </p>
-                                    <p>
-                                        <b>Gender:</b>
-                                        <span><?php echo $gender ; ?></span>
-                                    </p>
-                                    <p>
-                                        <b>Address:</b>
-                                        <span><?php echo $address; ?></span>
-                                    </p>
+                                <div class="col-8 row">
+                                    <div class="col-6">
+                                        <p>
+                                            <b>Name:</b>
+                                            <span><?php echo $stuname; ?></span>
+                                        </p>
+                                        <p>
+                                            <b>Father Name:</b>
+                                            <span><?php echo $stufather;?></span>
+                                        </p>
+                                        <p>
+                                            <b>Department:</b>
+                                            <span><?php echo $studepart;?></span>
+                                        </p>
+                                        <p>
+                                            <b>Email:</b>
+                                            <span><?php echo $email; ?></span>
+                                        </p>
+                                        <p>
+                                            <b>Gender:</b>
+                                            <span><?php echo $gender ; ?></span>
+                                        </p>
+                                    </div>
+                                    <div class="col-6">
+                                        <p>
+                                            <b>Enrollment:</b>
+                                            <span><?php echo $enroll;?></span>
+                                        </p>
+                                        <p>
+                                            <b>Mother Name:</b>
+                                            <span><?php echo $stumother;?></span>
+                                        </p>
+                                        <p>
+                                            <b>Semester:</b>
+                                            <span><?php echo $sem;?></span>
+                                        </p>
+                                        <p>
+                                            <b>Mobile:</b>
+                                            <span><?php echo $mobile; ?></span>
+                                        </p>
+                                        <p>
+                                            <b>Address:</b>
+                                            <span><?php echo $address; ?></span>
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                             <hr>
-                            <div class="col-2 row mx-auto">
-                                <div class="col-6">
-                                    <button class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
-                                </div>
-                                <div class="col-6">
-                                    <button class="btn btn-success"><i class="fa-solid fa-pen"></i></button>
-                                </div>
-                            </div>
                         </div>
                     </div>
                     <!-- end profile -->
@@ -166,7 +163,9 @@
                         <h1>Meeting</h1>
                         <hr>
                         <div class="col">
-                            <button class="btn btn-info">Join the meeting</button>
+                            <a href="">
+                                <button class="btn btn-info">Join the meeting</button>
+                            </a>
                         </div>
                     </div>
                     <!-- end meeting -->
@@ -301,7 +300,67 @@
                         </table>
                     </div>
                     <!-- end attendance -->
+                    
+                    <!-- report releted to issue  -->
+                    <div class="tab-pane fade" id="v-pills-report" role="tabpanel">
+                        <h1>Report</h1>
+                        <hr>
+                        <div class="col">
+                            <form id="reportForm">
+                                <div class="form-group">
+                                    <label for="title">Report Title</label>
+                                    <input type="text" class="form-control" id="title" placeholder="Title...">
+                                </div>
+                                <div class="form-group">
+                                    <label for="comment">Example textarea</label>
+                                    <textarea class="form-control" id="comment" rows="3"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-info">Submit your report</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <script>
+                       document.getElementById("reportForm").addEventListener("submit", function(event) {
+                       event.preventDefault(); 
+                   
+                       let title = document.getElementById("title").value;
+                       let comment = document.getElementById("comment").value;
+                   
+                       let enrollment = '<?php echo $enroll; ?>';
+                            if (title && comment) {
+                                fetch('asset/database/report_submit.php', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/x-www-form-urlencoded', 
+                                    },
+                                    body: new URLSearchParams({
+                                        enrollment: enrollment,
+                                        report_title: title,
+                                        report_comment: comment
+                                    })
+                                })
+                                .then(response => response.json()) 
+                                .then(data => {
+                                    if (data.message === "Report submitted") {
+                                        alert("Report successfully submitted!");
+                                    } else {
+                                        alert("Failed to submit report. Please try again.");
+                                    }
+                                })
+                                .catch(error => {
+                                    console.error("Error submitting report:", error);
+                                    alert("An error occurred. Please try again later.");
+                                });
+                            } else {
+                                alert("Please fill out both the title and comment fields.");
+                            }
+                        });
 
+                    </script>
+
+                    <!-- end report -->
                 </div>
             </div>
         </div>
