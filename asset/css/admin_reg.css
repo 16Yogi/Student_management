@@ -29,7 +29,7 @@
     width: 100%;
     font-weight: 700;
 }
-.error{
+/* .error{
     font-size: 15px;
     font-weight: 600;
     color: red;
@@ -38,4 +38,17 @@ input.success{
     font-size: 15px;
     font-weight: 700;
     color: green;
+} */
+
+.error input, .error select {
+    border-color: red;
+}
+.success input, .success select {
+    border-color: green;
+}
+.error .error {
+    color: red;
+}
+.success .error {
+    display: none;
 }
